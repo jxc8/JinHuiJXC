@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>金汇进销存</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Style/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript">
+    </script>
+    <style type="text/css">
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',border:false" class="top">
+        <div class="topt">
+            金汇进销存 <span class="topt11">标准版  2018</span>
+            <span class="topt14"> 账号：wangtianming  权限：总经理  修改 退出 </span>
+        </div>
+    </div>
+    <div id="nav" data-options="region:'west'" class="easyui-accordion nav">
+        <div title="商  品" iconCls="fa fa-angle-double-down" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao1',size:'large',iconAlign:'top'">商品管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('类别管理', '/SaleRec/Add.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-leibie',size:'large',iconAlign:'top'">类别管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('品牌管理', '/Brand/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-pinpai',size:'large',iconAlign:'top'">品牌管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('厂商管理', '/Supplier/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche3',size:'large',iconAlign:'top'">厂商管理</a>
+                </li>
+            </ul>
+        </div>
+        <div title="采  购" iconCls="fa fa-angle-double-down" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('采购意向', '/Supplier/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche2',size:'large',iconAlign:'top'">采购意向</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('采购记录', '/PurRec/Add.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche1',size:'large',iconAlign:'top'">采购记录</a>
+                </li>
+            </ul>
+        </div>
+        <div title="销  售" iconCls="fa fa-angle-double-down" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao2',size:'large',iconAlign:'top'">销售意向</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('销售记录', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao1',size:'large',iconAlign:'top'">销售记录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="margin-left:5px;">
+        <div id="divMain" class="easyui-tabs" data-options="border:false" style="height: auto;">
+            <div title="主页" data-options="closable:true" style="margin:10px;float:left">
+                <div style="width:48%;height:330px;float:left;display:inline;padding:5px;">
+                    <div id="panel11" class="easyui-panel" title="10天销量走势图">
+                        <div id="ec11" style="width: 520px;height:300px;">
+                        </div>
+                    </div>
+                </div>
+                <div style="width:48%;height:330px;float:left;display:inline;padding:5px;">
+                    <div id="panel12" class="easyui-panel" title="10天收入走势图">
+                        <div id="ec12" style="width: 520px;height:300px;">
+                        </div>
+                    </div>
+                </div>
+                <div style="width:48%;height:330px;float:left;display:inline;padding:5px;">
+                    <div id="panel13" class="easyui-panel" title="10天商品销量榜">
+                        <div id="ec13" style="width: 520px;height:340px;">
+                            <ul class="rank">
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">1</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            贵州茅台酒 酱香白酒 飞天茅台53度500ml
+                                        </a>
+                                        <span class="rank-one">3228</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">2</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            泸州老窖股份出品52度500ml久藏老窖白酒
+                                        </a>
+                                        <span class="rank-one">2006</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">3</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            江小白Se.300 40度 300ml白酒
+                                        </a>
+                                        <span class="rank-one">1289</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">4</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            美素佳儿（Friso）金装幼儿配方奶粉 3段900克
+                                        </a>
+                                        <span class="rank-one">1199</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">5</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            雅培金装妈妈喜康素孕产妇营养配方奶粉 800克
+                                        </a>
+                                        <span class="rank-one">1066</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">6</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            本纳梅洛干红葡萄酒 750ml
+                                        </a>
+                                        <span class="rank-one">989</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">7</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            农夫山泉 饮用天然水塑膜量贩装550ml*12瓶
+                                        </a>
+                                        <span class="rank-one">865</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">8</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            依能 苏打水 青柠味 350ml*15瓶/箱
+                                        </a>
+                                        <span class="rank-one">654</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">9</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            喜之郎 优乐美 u.loveit 咖啡奶茶 22g/包
+                                        </a>
+                                        <span class="rank-one">463</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rank-item">
+                                        <span class="rank-num">10</span>
+                                        <a target="_blank" title="" class="rank-title" href="">
+                                            苏泊尔（SUPOR）电磁炉纤薄滑控匀火爆炒电磁灶
+                                        </a>
+                                        <span class="rank-one">228</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:48%;height:330px;float:left;display:inline;padding:5px;">
+                    <div id="panel14" class="easyui-panel" title="10天商品利润榜">
+                        <div id="ec14" style="width: 520px;height:340px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height:30px;padding:6px;text-align:center">©2018-2020</div>
+    <script type="text/javascript" src="/Scripts/echarts.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart11 = echarts.init(document.getElementById('ec11'));
+        // 指定图表的配置项和数据
+        var option11 = {
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+
+            xAxis: {
+                data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '销量',
+                type: 'line',
+                data: [106, 128, 162, 182, 170, 178, 162, 188, 208, 308]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart11.setOption(option11);
+
+        var myChart12 = echarts.init(document.getElementById('ec12'));
+
+        var option12 = {
+            tooltip: {},
+            legend: {
+                data: ['收入']
+            },
+
+            xAxis: {
+                data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '收入',
+                type: 'line',
+                data: [1200, 1688, 1432, 1822, 2008, 2298, 2998, 3688, 5688, 6688]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart12.setOption(option12);
+
+
+        function closeTab() {
+            var tab = $('#divMain').tabs('getSelected');
+            if (tab) {
+                var index = $('#divMain').tabs('getTabIndex', tab);
+                $('#divMain').tabs('close', index);
+            }
+        }
+    </script>
+</body>
+</html>

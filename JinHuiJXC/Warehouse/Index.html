@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>仓库列表</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+</head>
+<body>
+    <table id="dgList" class="easyui-datagrid" title="仓库列表" fit="true"
+           data-options="border:false,rownumbers:true,singleSelect:true,pagination: true,striped: true,
+           url:'/api/Warehouse/GetAll',method:'get',toolbar:'#tbar',panelHeight:'auto'">
+        <thead>
+            <tr>
+                <th data-options="field:'ck',checkbox:true"></th>
+                <th width="5%" data-options="field:'ID',hidden:'true'">ID</th>
+                <th width="30%" data-options="field:'Name'">仓库名称</th>
+                <th width="10%" data-options="field:'Pinyin'">拼音</th>
+                <th width="18%" data-options="field:'Address'">地址</th>
+                <th width="8%" data-options="field:'Contacts'">联系人</th>
+                <th width="8%" data-options="field:'MobiPhone'">电话</th>
+                <th width="8%" data-options="field:'State'">状态</th>
+                <th width="15%" data-options="field:'AddTime',sortable:true">添加时间</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="tbar">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+                           onclick="self.parent.addTab('添加仓库', '/Warehouse/Add.html')">添加</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-show',plain:true"
+                           onclick="Edit()">查看</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"
+                           onclick="Edit()">修改</a>
+                    </td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-del-1',plain:true"
+                           onclick="Del()">删除</a>
+                    </td>
+                    <td><div class="datagrid-btn-separator"></div></td>
+
+                    <td>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tb-excel',plain:true"
+                           onclick="ExcelGo()">导出</a>
+                    </td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"
+                           onclick="Search()">查询</a>
+                    </td>
+                    <td><div class="datagrid-btn-separator"></div></td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-refurbish',plain:true"
+                           onclick="Ref()">刷新</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="winSearch" class="easyui-window" title="查询窗口"
+         style="width:400px;height:300px;padding:10px;display:none;overflow:hidden">
+        <table style="padding-left:20px;font-size:14px">
+            <tr style="height:40px;">
+                <td style="width:80px">名称：</td>
+                <td>
+                    <input class="easyui-textbox" style="width:200px;height:30px">
+                </td>
+            </tr>
+            <tr style="height:40px;">
+                <td>拼音：</td>
+                <td>
+                    <input class="easyui-textbox" style="width:200px;height:30px">
+                </td>
+            </tr>
+            <tr style="height:40px;">
+                <td>添加时间：</td>
+                <td>
+                    从 <input class="easyui-datebox" style="width:160px;height:30px">
+                </td>
+            </tr>
+            <tr style="height:40px;">
+                <td></td>
+                <td>
+                    到 <input class="easyui-datebox" style="width:160px;height:30px">
+                </td>
+            </tr>
+            <tr style="height:60px;">
+                <td></td>
+                <td>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="SearchGo()"
+                       style="width:80px;height:36px;font-size:14px">提 交</a>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
+                       style="width:80px;height:36px;font-size:14px"
+                       onclick="javascript: $('#winSearch').window('close')">取 消</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#winSearch').window({
+                closed: true,
+                collapsible: true,
+                minimizable: false,
+                maximizable: false
+            });
+        });
+
+        function Ref() {
+            $('#dgList').datagrid('reload');
+        }
+
+        function getSelected() {
+            var row = $('#dgList').datagrid('getSelected');
+            if (row) {
+                $.messager.alert('提示', row.Name + "");
+            }
+        }
+
+        function Edit() {
+            var row = $('#dgList').datagrid('getSelected');
+            var sTitle = ('修改 ' + row.Name).substring(0, 10);
+            var sUrl = "/Warehouse/Edit.html?ID=" + row.ID;
+            self.parent.addTab(sTitle, sUrl);
+        }
+
+        function Search() {
+            $('#winSearch').window('open');
+        }
+
+        function SearchGo() {
+            $.messager.alert('提示', '很抱歉，遇到了一个技术问题，请稍后重试，或与技术人员联系。');
+        }
+
+        function ExcelGo() {
+            $.messager.alert('提示', '很抱歉，遇到了一个技术问题，请稍后重试，或与技术人员联系。');
+        }
+
+        function Del() {
+            $.messager.defaults = { ok: "是", cancel: "否" };
+            $.messager.confirm('警告', '您确认删除这条信息吗?删除之后不可恢复！', function (r) {
+                if (r) {
+                    $.messager.alert('提示', '信息已经成功删除');
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+</body>
+
+</html>

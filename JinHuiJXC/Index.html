@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>金汇进销存</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Style/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript">
+    </script>
+    <style type="text/css">
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',border:false" class="top">
+        <div class="topt">
+            金汇进销存 <span class="topt11">标准版  2018</span>
+                  <span class="topt14"> 店铺：天明超市    账号：litianming    权限：总经理  修改 退出 </span>
+        </div>
+    </div>
+    <div id="nav" data-options="region:'west'" class="easyui-accordion nav">
+        <div title="基  础" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('厂商管理', '/Supplier/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-shang',size:'large',iconAlign:'top'">厂商管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('票据类型', '/TypeReceipt/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-piaoju',size:'large',iconAlign:'top'">票据类型</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('支付方式', '/TypePay/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-zhifu',size:'large',iconAlign:'top'">支付类型</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('包装单位', '/TypePack/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-baoz',size:'large',iconAlign:'top'">包装单位</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('发货方式', '/TypeDelivery/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche1',size:'large',iconAlign:'top'">发货方式</a>
+                </li>
+            </ul>
+        </div>
+        <div title="商  品" iconCls="icon-appup3" style="overflow:auto;"  data-options="selected:true">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao3',size:'large',iconAlign:'top'">商品管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('类别管理', '/Category/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-leibie',size:'large',iconAlign:'top'">类别管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('品牌管理', '/Brand/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-pinpai',size:'large',iconAlign:'top'">品牌管理</a>
+                </li>
+            </ul>
+        </div>
+        <div title="采  购" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('采购意向', '/Supplier/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche2',size:'large',iconAlign:'top'">采购意向</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('采购记录', '/PurRec/Add.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-huoche1',size:'large',iconAlign:'top'">采购记录</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('仓库管理', '/Warehouse/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-cang',size:'large',iconAlign:'top'">仓库管理</a>
+                </li>
+            </ul>
+        </div>
+        <div title="销  售" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao2',size:'large',iconAlign:'top'">销售意向</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('销售记录', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao1',size:'large',iconAlign:'top'">销售记录</a>
+                </li>
+            </ul>
+        </div>
+        <div title="库  存" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao3',size:'large',iconAlign:'top'">库存预警</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('销售记录', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-xiao4',size:'large',iconAlign:'top'">库存排行</a>
+                </li>
+            </ul>
+        </div>
+        <div title="报  表" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-report1',size:'large',iconAlign:'top'">利润报表</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('销售记录', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-report2',size:'large',iconAlign:'top'">销售排行</a>
+                </li>
+            </ul>
+        </div>
+        <div title="客  户" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('客户管理', '/Member/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-user3',size:'large',iconAlign:'top'">客户管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('客户星级', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-star1',size:'large',iconAlign:'top'">客户星级</a>
+                </li>
+            </ul>
+        </div>
+        <div title="系  统" iconCls="icon-appup3" style="overflow:auto;">
+            <ul>
+                <li>
+                    <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-user2',size:'large',iconAlign:'top'">用户管理</a>
+                </li>
+                <li>
+                    <a href="#" onclick="addTab('销售记录', '/SaleRec/Index.html')"
+                       class="easyui-linkbutton"
+                       data-options="iconCls:'icon-leibie',size:'large',iconAlign:'top'">操作日志</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="margin-left:5px;">
+        <div id="divMain" class="easyui-tabs" data-options="border:false" style="height: auto;">
+            <div title="主页" data-options="closable:true" style="margin:10px;float:left">
+                <div class="divGuideMain">
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('销售意向', '/SaleRec/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_rep22.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    基础信息
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_cart64.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    商品信息
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_bag6.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    采购管理
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_card2.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    销售管理
+                                </div>
+                            </div>
+                        </a>
+                    </div><br />
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_statis2.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    库存查询
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('客户管理', '/Member/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_user2.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    客户管理
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_charts6.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    收入统计
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="divGuide">
+                        <a href="#" onclick="addTab('商品管理', '/Goods/Index.html')">
+                            <div class="divGuide11">
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    <img alt="" src="/Images/ico_statis3.png" />
+                                </div>
+                                <div style="padding-top:10px;padding-left:5px;">
+                                    利润报表
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height:30px;padding:6px;text-align:center">
+        金汇进销存 ©2018-2020  标准版  2018  Ver 1.2
+    </div>
+    <script type="text/javascript">
+        function closeThisTab() {
+            var tab = $('#divMain').tabs('getSelected');
+            var index = $('#divMain').tabs('getTabIndex', tab);
+            $('#divMain').tabs('close', index);
+        }  
+    </script>
+</body>
+</html>

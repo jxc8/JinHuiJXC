@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>修改品牌</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+</head>
+<body style="height:100%;">
+    <form id="form1" class="easyui-form" action="/api/Brand/Edit" method="post" data-options="novalidate:true">
+        <input id="BrandID" name="BrandID" type="hidden" value="">
+        <table class="tb60" border="0" cellpadding="0" cellspacing="0" style="min-height:300px">
+            <tr class="tr60">
+                <td class="td60">名称：</td>
+                <td colspan="3">
+                    <input id="Name" name="Name" type="text" class="easyui-textbox in180"
+                           data-options="required:true,validType:'length[2,30]',missingMessage:'必须填写',invalidMessage:'限于3-30个字之间',
+                           validateOnCreate:false,validateOnBlur:true">
+                    <span class="ft99"> 限于2至30个字之间</span>
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">拼音：</td>
+                <td colspan="3">
+                    <input id="Pinyin" name="Pinyin" type="text" class="easyui-textbox in180">
+                    <span class="ft99"> 拼音简码或助记码</span>
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">公司：</td>
+                <td colspan="3">
+                    <input id="Company" name="Company" type="text" class="easyui-textbox in280">
+                </td>
+            </tr>
+            <tr class="tr120">
+                <td class="td80">说明：</td>
+                <td colspan="3"><input id="Desc" name="Desc" type="text" multiline="true" class="easyui-textbox" style="width:300px;height:80px"></td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80"></td>
+                <td class="td20">
+                    <a href="#" class="easyui-linkbutton btn" onclick="submitForm()" iconCls="icon-save" style="color: #009900;width:80px">保 存</a>
+                </td>
+                <td class="td80"></td>
+                <td class="td20">
+                    <a href="#" class="easyui-linkbutton btn" iconCls="icon-undo" style="color: #009900;width:80px">取 消</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="divLoad" class="easyui-window" title="提示"
+         data-options="modal:true,collapsible:false,minimizable:false,maximizable:false,closable:false"
+         style="width:220px;height:80px;padding:10px;">
+        正在获取信息，请稍候。。。
+    </div>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript" src="/Scripts/pinyin_dict_firstletter.js"></script>
+    <script type="text/javascript" src="/Scripts/pinyinUtil.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            getInfo();
+            setPinYin();
+        });
+
+        function getInfo() {
+            var sID = getQueryString();
+            $("#BrandID").val(sID.ID);
+            var sUrl = "/api/Brand/Get/" + sID.ID;
+            $.ajax({
+                url: sUrl,
+                type: "get",
+                dataType: "json",
+                beforeSend: function () {
+                    $('#divLoad').window('open');
+                },
+                success: function (data) {
+                    var da = $.parseJSON(data);
+                    $('#Name').textbox('setValue', da[0].Name);
+                    $('#Pinyin').textbox('setValue', da[0].Pinyin);
+                    $('#Company').textbox('setValue', da[0].Company);
+                    $('#Desc').textbox('setValue', da[0].Desc);
+                },
+                error: function (msg) {
+                    alert("很抱歉，未能获取相关信息，请稍候重试。或与技术人员联系。" + msg.statusText);
+                },
+                complete: function () {
+                    $('#divLoad').window('close');
+                }
+            });
+        }
+
+        function submitForm() {
+            $('#form1').form('submit', {
+                onSubmit: function () {
+                    return $(this).form('enableValidation').form('validate');
+                },
+                success: function (data, textStatus, x) {
+                    if (data == 1) {
+                        alert("品牌信息修改成功。");
+                        window.parent.closeThisTab();
+                    }
+                    else {
+                        alert("很抱歉，遇到了一个技术问题，请稍后重试，或与技术人员联系。");
+                    }
+                },
+                error: function (r, s, e) {
+                    alert(r + s);
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+</body>
+</html>

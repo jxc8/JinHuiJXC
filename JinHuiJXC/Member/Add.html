@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加客户</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+</head>
+<body style="height:100%;">
+    <form id="form1" class="easyui-form" action="/api/Member/Add" method="post" data-options="novalidate:true">
+        <table class="tb60" border="0" cellpadding="0" cellspacing="0">
+            <tr class="tr60">
+                <td class="td80">名称：</td>
+                <td colspan="3">
+                    <input id="Name" name="Name" type="text" class="easyui-textbox in180"
+                           data-options="required:true,validType:'length[2,30]',missingMessage:'必须填写',invalidMessage:'限于2-30个字之间',
+                           validateOnCreate:false,validateOnBlur:true">
+                    <span class="ft99"> 限于2至30个字之间</span>
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">拼音：</td>
+                <td class="td20">
+                    <input id="Pinyin" name="Pinyin" type="text" class="easyui-textbox in120">
+                    <span class="ft99"> 或英文</span>
+                </td>
+                <td class="td80">编号：</td>
+                <td class="td20">
+                    <input id="NO" name="NO" type="text" value="" class="easyui-textbox in120">
+                </td>
+            </tr>
+
+            <tr class="tr60">
+                <td class="td80">性别：</td>
+                <td class="td20">
+                    <select id="Sex" name="Sex" class="easyui-combobox in120">
+                        <option value="1" selected>男</option>
+                        <option value="2">女</option>
+                        <option value="2">保密</option>
+                    </select>
+                </td>
+                <td class="td80">生日：</td>
+                <td class="td20">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input id="Birthday" name="Birthday" type='text' class="easyui-datebox in120" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">积分：</td>
+                <td class="td20">
+                    <input id="Score" name="Score" type="text" value="" class="easyui-textbox in120">
+                </td>
+                <td class="td80">星级：</td>
+                <td class="td20">
+                    <select id="Rank" name="Rank" class="easyui-combobox in120">
+                        <option value="3" selected>三星级</option>
+                        <option value="4">四星级</option>
+                        <option value="5">五星级</option>
+                        <option value="6">钻石级</option>
+                        <option value="8">白金级</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">电话：</td>
+                <td class="td20">
+                    <input id="TelPhone" name="TelPhone" type="text" value="" class="easyui-textbox in120">
+                </td>
+                <td class="td80">手机：</td>
+                <td class="td20">
+                    <input id="MobiPhone" name="MobiPhone" type="text" value="" class="easyui-textbox in120">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">微信：</td>
+                <td class="td20">
+                    <input id="WeiXin" name="WeiXin" type="text" value="" class="easyui-textbox in120">
+                </td>
+                <td class="td80">QQ/Mail：</td>
+                <td class="td20">
+                    <input id="QQ" name="QQ" type="text" value="" class="easyui-textbox in120">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">身份证号：</td>
+                <td colspan="3">
+                    <input id="IDCard" name="IDCard" type="text" class="easyui-textbox in180">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">单位：</td>
+                <td colspan="3">
+                    <input id="Company" name="Company" type="text" class="easyui-textbox in180">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">联系地址：</td>
+                <td colspan="3">
+                    <input id="Address" name="Address" type="text" class="easyui-textbox in280">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">对公账户：</td>
+                <td colspan="3">
+                    <input id="BankNo" name="BankNo" type="text" class="easyui-textbox in180">
+                </td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80">开户银行：</td>
+                <td colspan="3">
+                    <input id="BankName" name="BankName" type="text" class="easyui-textbox in280">
+                </td>
+            </tr>
+
+            <tr class="tr60">
+                <td class="td80">税号：</td>
+                <td class="td20">
+                    <input id="TaxID" name="TaxID" type="text" value="" class="easyui-textbox in120">
+                </td>
+                <td class="td80">类别：</td>
+                <td class="td20">
+                    <select id="TaxType" name="TaxType" class="easyui-combobox in120">
+                        <option value="1">小规模纳税人</option>
+                        <option value="2">一般纳税人</option>
+                        <option value="3">个体工商户</option>
+                        <option value="4" selected>个人</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr120">
+                <td class="td80">说明：</td>
+                <td colspan="3"><input id="Desc" name="Desc" type="text" multiline="true" class="easyui-textbox" style="width:420px;height:80px"></td>
+            </tr>
+            <tr class="tr60">
+                <td class="td80"></td>
+                <td class="td20">
+                    <a href="#" class="easyui-linkbutton btn" onclick="submitForm()" iconCls="icon-save" style="color: #009900;width:80px">保 存</a>
+                </td>
+                <td class="td80"></td>
+                <td class="td20">
+                    <a href="#" class="easyui-linkbutton btn" iconCls="icon-undo" style="color: #009900;width:80px">取 消</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script type="text/javascript" src="/Scripts/pinyin_dict_firstletter.js"></script>
+    <script type="text/javascript" src="/Scripts/pinyinUtil.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+        });
+        $('#Name').textbox({
+            onChange: function (value) {
+                var name = value;
+                var pinyin = pinyinUtil.getFirstLetter(name);
+                $("#Pinyin").textbox('setValue', pinyin);
+            }
+        });
+        function savereg() {
+            var sName = $("#Name").val();
+            var sForm = $("#form1").serializeArray();
+            console.debug(sName);
+        }
+
+        function submitForm() {
+            $('#form1').form('submit', {
+                onSubmit: function () {
+                    return $(this).form('enableValidation').form('validate');
+                },
+                success: function (data) {
+                    if (data == 1) {
+                        alert("客户信息添加成功。");
+                        window.parent.closeThisTab();
+                    }
+                    else {
+                        alert("很抱歉，遇到了一个技术问题，请稍后重试，或与技术人员联系。");
+                    }
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+</body>
+</html>

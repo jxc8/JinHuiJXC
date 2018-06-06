@@ -1,0 +1,385 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加采购记录</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+</head>
+<body>
+    <form id="form1" class="easyui-form" action="/api/SalesRec/Add" method="post">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr class="tr60">
+                <td style="width:70px;">
+                    <label for="MemberName">供  应 商：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberName" name="MemberName" type="text" class="easyui-textbox"
+                           placeholder="">
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="MemberNo">仓库：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberNo" name="MemberNo" type="text" class="easyui-textbox"
+                           placeholder="">
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="MemberScore" class="control-label">入库时间：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberScore" name="MemberScore" type="text" class="easyui-textbox"
+                           placeholder="">
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="DiscountAmount10" class="control-label">税率(%)：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="DiscountAmount10" name="DiscountAmount10" type="text" class="easyui-textbox"
+                           value='100'>
+                </td>
+            </tr>
+            <tr style="height:10px;">
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="GoodsBarcode" class="control-label">商品条码：</label>
+                </td>
+                <td>
+                    <input id="GoodsBarcode" name="GoodsBarcode" type="text" class="easyui-combobox"
+                           style="width:100%;" data-options="valueField: 'ID',textField: 'Barcode'" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsPinyin" class="control-label">拼音助记：</label>
+                </td>
+                <td>
+                    <input id="GoodsPinyin" name="GoodsPinyin" type="text" class="easyui-combobox"
+                           style="width:100%;" data-options="valueField: 'ID',textField: 'Pinyin'" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsCode" class="control-label">货号编码：</label>
+                </td>
+                <td>
+                    <input id="GoodsCode" name="GoodsCode" type="text" class="easyui-combobox"
+                           style="width:100%;" data-options="valueField: 'ID',textField: 'Nocode'" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsName" class="control-label">商品名称：</label>
+                </td>
+                <td>
+                    <input id="GoodsName" name="GoodsName" type="text" class="easyui-combobox"
+                           style="width:100%;" data-options="valueField: 'ID',textField: 'Name'" />
+                </td>
+            </tr>
+        </table>
+        <div style="min-height:300px">
+            <div style="height:15px;border-top:1px dashed #cccccc;margin-top:15px;"></div>
+            <div id="tbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add-1',plain:true,striped:true"
+                   onclick="addRow()">修改</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-del-1',plain:true"
+                   onclick="delRow()">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true"
+                   onclick="accept()">确认</a>
+            </div>
+            <table id="dgList" class="easyui-datagrid" title="商品列表" fit="true"
+                   data-options="border:false,rownumbers:true,toolbar:'#tbar',panelHeight:'auto',
+                   singleSelect:true,onClickCell: onClickCell,onEndEdit: onEndEdit">
+                <thead>
+                    <tr>
+                        <th width="5%" data-options="field:'ID',hidden:'true'">ID</th>
+                        <th width="25%" data-options="field:'Name'">商品名称</th>
+                        <th width="10%" data-options="field:'Barcode'">条码</th>
+                        <th width="10%" data-options="field:'NowInv'">当前库存</th>
+                        <th width="5%" data-options="field:'PriceRetail'" editor="{type:'textbox',options:{required:false}}">单价</th>
+                        <th width="10%" data-options="field:'Num'" editor="{type:'textbox',options:{required:false}}">数量</th>
+                        <th width="5%" data-options="field:'MinPack'">单位</th>
+                        <th width="5%" data-options="field:'Discount'" editor="{type:'textbox',options:{required:false}}">折扣(%)</th>
+                        <th width="10%" data-options="field:'PriceTotal'" editor="{type:'textbox',options:{required:false}}">总价</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <table style="background-color:#f5f5f5;width:100%;font-size:16px;font-weight:bold;">
+                <tr>
+                    <td width="50%"></td>
+                    <td width="5%">合计：</td>
+                    <td width="5%">&nbsp;<label id="lbNum">0</label></td>
+                    <td width="5%">&nbsp;<label id="lbTotal">0</label>&nbsp;&nbsp;元</td>
+                    <td width="35%"></td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td style="width:400px">
+                        <a id="aDanJu" href="javascript:;" class="more10">单据信息>></a>
+                    </td>
+                    <td style="width:120px;text-align:right;">
+                        <label for="DiscountAmount">减采购优惠：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="DiscountAmount" name="DiscountAmount" type="text" class="easyui-textbox in120"
+                               value="0" placeholder="">
+                    </td>
+                    <td style="width:120px;text-align:right;">
+                        <label for="ChargeAmount">加采购费用：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="ChargeAmount" name="ChargeAmount" type="text" class="easyui-textbox in120"
+                               value="0">
+                    </td>
+                    <td style="width:100px;text-align:right;">
+                        <label for="ReceiveAmount">实收金额：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="ReceiveAmount" name="ReceiveAmount" type="text" class="easyui-textbox in120"
+                               value="0">
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div id="tbDanJu" style="display:none">
+                <table>
+                    <tr>
+                        <td style="width:70px;">
+                            <label for="SalesNo" class="control-label font66">单据编号：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="SalesNo" name="SalesNo" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="SalesDate" class="control-label font66">单据日期：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input id="SalesDate" name="SalesDate" type='text' class="easyui-datebox in180" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="SalesType" class="control-label font66">单据类型：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="SalesType" name="SalesType" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="AddPerson" class="control-label font66">填单人：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="AddPerson" name="AddPerson" type="text" class="easyui-textbox in180"
+                                   value='100'>
+                        </td>
+                    </tr>
+                    <tr style="height:10px;">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="SalerName" class="control-label font66">采购人：</label>
+                        </td>
+                        <td>
+                            <input id="SalerName" name="SalerName" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="PaymentMethod" class="control-label font66">付款方式：</label>
+                        </td>
+                        <td>
+                            <input id="PaymentMethod" name="PaymentMethod" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="DeliveryMethod" class="control-label font66">发货方式：</label>
+                        </td>
+                        <td>
+                            <input id="DeliveryMethod" name="DeliveryMethod" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="SalesDesc" class="control-label font66">备注：</label>
+                        </td>
+                        <td>
+                            <input id="SalesDesc" name="SalesDesc" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="height:15px;border-top:1px dashed #cccccc;margin-top:15px;"></div>
+            <table>
+                <tr class="tr60">
+                    <td style="width:200px;"></td>
+                    <td class="td80">
+                        <a href="#" class="easyui-linkbutton btn" onclick="submitForm()" iconCls="icon-save" style="color: #009900;width:80px">保  存</a>
+                    </td>
+                    <td class="td80"></td>
+                    <td class="td80">
+                        <a href="#" class="easyui-linkbutton btn" iconCls="icon-cancel" style="color: #009900;width:80px">取  消</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript" src="/Scripts/sale.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#GoodsName').combobox('textbox').bind("keyup", function (e) {
+                if (event.keyCode == "13") {
+                    var theID = $('#GoodsName').combobox('getValue');
+                    $.each(jsonNameList, function (i, o) {
+                        if (o.ID == theID) {
+                            addGridRow(o);
+                        }
+                    });
+                }
+            });
+        });
+
+        $('#SalesNo').val(getNumberOnTime());
+        $('#SalesDate').val(getNowDate());
+
+        function Save() {
+            var data = $('#dgList').datagrid('getRows');
+            //console.debug(data);
+        }
+
+        function submitForm() {
+
+            $('#form1').form('submit', {
+                onSubmit: function (param) {
+                    //var sForm = $("#form1").serializeArray();
+                    var list = $('#dgList').datagrid('getRows');
+                    param.list = JSON.stringify(list);
+                },
+                success: function (data) {
+                    var oJson = data.toString();
+                    if (oJson == 0) {
+                        alert(sMsgErrorGet);
+                    }
+                    if (oJson == 1) {
+                        alert("销售记录添加成功。");
+                    }
+                }
+            });
+        }
+
+        $("#aDanJu").click(function () {
+            $("#tbDanJu").toggle(500);
+        });
+
+        var editIndex = undefined;
+
+        function addGridRow(o) {
+            var rows = $('#dgList').datagrid('getRows');
+            var irow = -1;
+            var inum = 0;
+
+            for (var i in rows) {
+                if (o.Name == rows[i].Name) {
+                    irow = i;
+                    inum = parseInt(rows[i].Num) + 1;
+                }
+            };
+            if (irow >= 0) {
+                $('#dgList').datagrid('updateRow',
+                    {
+                        index: irow,
+                        row: {
+                            Num: inum
+                        }
+                    }
+                );
+            }
+            else {
+                $('#dgList').datagrid('appendRow',
+                    {
+                        ID: o.ID, Name: o.Name, Barcode: o.Barcode, NowInv: o.NowInv, PriceRetail: o.PriceRetail,
+                        Num: '1', MinPack: o.MinPack, Discount: '100', PriceTotal: o.PriceRetail
+                    }
+                );
+            }
+
+            editIndex = rows.length - 1;
+            $('#dgList').datagrid('selectRow', editIndex).datagrid('beginEdit', editIndex);
+        }
+
+        function onClickCell(index, field) {
+            if (editIndex != index) {
+                if (endEditing()) {
+                    $('#dgList').datagrid('selectRow', index)
+                        .datagrid('beginEdit', index);
+                    var ed = $('#dgList').datagrid('getEditor', { index: index, field: field });
+                    if (ed) {
+                        ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+                    }
+                    editIndex = index;
+                } else {
+                    setTimeout(function () {
+                        $('#dgList').datagrid('selectRow', editIndex);
+                    }, 0);
+                }
+            }
+        }
+
+        function accept() {
+            if (endEditing()) {
+                $('#dgList').datagrid('acceptChanges');
+            }
+        }
+
+        function endEditing() {
+            if (editIndex == undefined) { return true }
+            if ($('#dgList').datagrid('validateRow', editIndex)) {
+                $('#dgList').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function onEndEdit(index, row) {
+            var rowTotal = parseFloat(row.PriceRetail) * parseFloat(row.Num);
+            row.PriceTotal = rowTotal.toFixed(2);
+            var numAll = 0;
+            var priAll = 0;
+            var rowAll = $('#dgList').datagrid('getRows');
+            for (var i = 0; i < rowAll.length; i++) {
+                numAll += parseFloat(rowAll[i].Num);
+                priAll += parseFloat(rowAll[i].PriceTotal);
+            }
+            $("#lbNum").html(numAll);
+            $("#lbTotal").html(priAll);            
+            $('#ReceiveAmount').textbox('setValue', priAll); 
+
+        }
+
+        function delRow() {
+            if (editIndex == undefined) { return }
+            $('#dgList').datagrid('cancelEdit', editIndex)
+                .datagrid('deleteRow', editIndex);
+            editIndex = undefined;
+        }
+
+        function getRow() {
+            var ed = $('#dgList').datagrid('getEditors', index);
+            //console.debug(ed);
+        }
+    </script>
+
+</body>
+</html>

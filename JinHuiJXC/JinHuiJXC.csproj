@@ -1,0 +1,241 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{621053C7-1936-4E16-BD73-CDC2EB27EB3B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JinHuiJXC</RootNamespace>
+    <AssemblyName>JinHuiJXC</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Brand\Add.html" />
+    <Content Include="Brand\Edit.html" />
+    <Content Include="Brand\Index.html" />
+    <Content Include="Category\Add.html" />
+    <Content Include="Category\Edit.html" />
+    <Content Include="Category\Index.html" />
+    <Content Include="Docs\Goods.sql" />
+    <Content Include="Docs\SalesDetail.sql" />
+    <Content Include="Docs\SalesRec.sql" />
+    <Content Include="Global.asax" />
+    <Content Include="Goods\Add.html" />
+    <Content Include="Goods\Edit.html" />
+    <Content Include="Goods\Index.html" />
+    <Content Include="Goods\Show.html" />
+    <Content Include="Index.html" />
+    <Content Include="Member\Add.html" />
+    <Content Include="Member\Edit.html" />
+    <Content Include="Member\Index.html" />
+    <Content Include="PurRec\Add.html" />
+    <Content Include="PurRec\Index.html" />
+    <Content Include="PurRec\Show.html" />
+    <Content Include="SaleRec\Add.html" />
+    <Content Include="SaleRec\Index.html" />
+    <Content Include="SaleRec\Show.html" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\pinyinUtil.js" />
+    <Content Include="Scripts\pinyin_dict_firstletter.js" />
+    <Content Include="Scripts\pinyin_dict_notone.js" />
+    <Content Include="Scripts\sale.js" />
+    <Content Include="Style\fa\css\font-awesome.css" />
+    <Content Include="Style\fa\css\font-awesome.min.css" />
+    <Content Include="Style\fa\fonts\fontawesome-webfont.svg" />
+    <Content Include="Style\main.css" />
+    <Content Include="Supplier\Add.html" />
+    <Content Include="Supplier\Edit.html" />
+    <Content Include="Supplier\Index.html" />
+    <Content Include="Supplier\Show.html" />
+    <Content Include="tt.html" />
+    <Content Include="TypeDelivery\Add.html" />
+    <Content Include="TypeDelivery\Edit.html" />
+    <Content Include="TypeDelivery\Index.html" />
+    <Content Include="TypePack\Add.html" />
+    <Content Include="TypePack\Edit.html" />
+    <Content Include="TypePack\Index.html" />
+    <Content Include="TypePay\Add.html" />
+    <Content Include="TypePay\Edit.html" />
+    <Content Include="TypePay\Index.html" />
+    <Content Include="TypeReceipt\Add.html" />
+    <Content Include="TypeReceipt\Edit.html" />
+    <Content Include="TypeReceipt\Index.html" />
+    <Content Include="Warehouse\Add.html" />
+    <Content Include="Warehouse\Edit.html" />
+    <Content Include="Warehouse\Index.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\GoodsController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\SalesRecController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\TypeDeliveryController.cs" />
+    <Compile Include="Controllers\TypePackController.cs" />
+    <Compile Include="Controllers\TypePayController.cs" />
+    <Compile Include="Controllers\TypeReceiptController.cs" />
+    <Compile Include="Controllers\WarehouseController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\SqlHelper.cs" />
+    <Compile Include="Helper\WebHelper.cs" />
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\GoodsModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\PurRecDetailModel.cs" />
+    <Compile Include="Models\PurRecModel.cs" />
+    <Compile Include="Models\SalesRecDetailModel.cs" />
+    <Compile Include="Models\SalesRecModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\TypeDeliveryModel.cs" />
+    <Compile Include="Models\TypePackModel.cs" />
+    <Compile Include="Models\TypePayModel.cs" />
+    <Compile Include="Models\TypeReceiptModel.cs" />
+    <Compile Include="Models\WarehouseModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Style\fa\css\font-awesome.css.map" />
+    <Content Include="Style\fa\fonts\fontawesome-webfont.eot" />
+    <Content Include="Style\fa\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Style\fa\fonts\fontawesome-webfont.woff" />
+    <Content Include="Style\fa\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Style\fa\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
+    <Folder Include="PurRes\" />
+    <Folder Include="SaleRes\" />
+    <Folder Include="User\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52382/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:52382/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

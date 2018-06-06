@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查看销售记录</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+</head>
+<body>
+    <form id="form1" class="easyui-form">
+        <input id="RecID" name="RecID" type="hidden" value="">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr class="tr60">
+                <td style="width:70px;">
+                    <label for="MemberName">客户名称：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberName" name="MemberName" type="text" class="easyui-textbox" />
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="MemberNo">会员卡号：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberNo" name="MemberNo" type="text" class="easyui-textbox" />
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="MemberScore" class="control-label">增加积分：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="MemberScore" name="MemberScore" type="text" class="easyui-textbox" />
+                </td>
+                <td style="width:100px;text-align:right;">
+                    <label for="DiscountAmount10" class="control-label">折扣(%)：</label>
+                </td>
+                <td style="width:180px;">
+                    <input id="DiscountAmount10" name="DiscountAmount10" type="text" class="easyui-textbox" />
+                </td>
+            </tr>
+            <tr style="height:10px;">
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="GoodsBarcode" class="control-label">商品条码：</label>
+                </td>
+                <td>
+                    <input id="GoodsBarcode" name="GoodsBarcode" type="text" class="easyui-textbox" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsPinyin" class="control-label">拼音助记：</label>
+                </td>
+                <td>
+                    <input id="GoodsPinyin" name="GoodsPinyin" type="text" class="easyui-textbox" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsCode" class="control-label">货号编码：</label>
+                </td>
+                <td>
+                    <input id="GoodsCode" name="GoodsCode" type="text" class="easyui-textbox" />
+                </td>
+                <td style="text-align:right;">
+                    <label for="GoodsName" class="control-label">商品名称：</label>
+                </td>
+                <td>
+                    <input id="GoodsName" name="GoodsName" type="text" class="easyui-textbox" />
+                </td>
+            </tr>
+        </table>
+        <div style="min-height:300px">
+            <div style="height:15px;border-top:1px dashed #cccccc;margin-top:15px;"></div>
+            <table id="dgList" class="easyui-datagrid" title="商品列表" fit="true"
+                   data-options="border:false,rownumbers:true,singleSelect:true">
+                <thead>
+                    <tr>
+                        <th width="5%" data-options="field:'ID',hidden:'true'">ID</th>
+                        <th width="25%" data-options="field:'GoodsName'">商品名称</th>
+                        <th width="10%" data-options="field:'Barcode'">条码</th>
+                        <th width="10%" data-options="field:'NowInv'">当前库存</th>
+                        <th width="5%" data-options="field:'UnitPrice'">单价</th>
+                        <th width="10%" data-options="field:'Num'">数量</th>
+                        <th width="5%" data-options="field:'MinPack'">单位</th>
+                        <th width="5%" data-options="field:'DisRate'">折扣(%)</th>
+                        <th width="10%" data-options="field:'TotalPrice'">总价</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <table style="background-color:#f5f5f5;width:100%;font-size:16px;font-weight:bold;">
+                <tr>
+                    <td width="50%"></td>
+                    <td width="5%">合计：</td>
+                    <td width="5%">&nbsp;<label id="lbNum">0</label></td>
+                    <td width="5%">&nbsp;<label id="lbTotal">0</label>&nbsp;&nbsp;元</td>
+                    <td width="35%"></td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td style="width:400px">
+                        <a id="aDanJu" href="javascript:;" class="more10">单据信息>></a>
+                    </td>
+                    <td style="width:120px;text-align:right;">
+                        <label for="DiscountAmount">减其它优惠：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="DiscountAmount" name="DiscountAmount" type="text" class="easyui-textbox in120"
+                               value="0" placeholder="">
+                    </td>
+                    <td style="width:120px;text-align:right;">
+                        <label for="ChargeAmount">加其它费用：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="ChargeAmount" name="ChargeAmount" type="text" class="easyui-textbox in120"
+                               value="0">
+                    </td>
+                    <td style="width:100px;text-align:right;">
+                        <label for="ReceiveAmount">实收金额：</label>
+                    </td>
+                    <td style="width:100px;">
+                        <input id="ReceiveAmount" name="ReceiveAmount" type="text" class="easyui-textbox in120"
+                               value="0">
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <div id="tbDanJu" style="display:">
+                <table>
+                    <tr>
+                        <td style="width:70px;">
+                            <label for="SalesNo" class="control-label font66">单据编号：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="SalesNo" name="SalesNo" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="SalesDate" class="control-label font66">单据日期：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input id="SalesDate" name="SalesDate" type='text' class="easyui-datebox in180" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="SalesType" class="control-label font66">单据类型：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="SalesType" name="SalesType" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="width:100px;text-align:right;">
+                            <label for="AddPerson" class="control-label font66">填单人：</label>
+                        </td>
+                        <td style="width:120px;">
+                            <input id="AddPerson" name="AddPerson" type="text" class="easyui-textbox in180"
+                                   value='100'>
+                        </td>
+                    </tr>
+                    <tr style="height:10px;">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="SalerName" class="control-label font66">销售人：</label>
+                        </td>
+                        <td>
+                            <input id="SalerName" name="SalerName" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="PaymentMethod" class="control-label font66">付款方式：</label>
+                        </td>
+                        <td>
+                            <input id="PaymentMethod" name="PaymentMethod" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="DeliveryMethod" class="control-label font66">发货方式：</label>
+                        </td>
+                        <td>
+                            <input id="DeliveryMethod" name="DeliveryMethod" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                        <td style="text-align:right;">
+                            <label for="SalesDesc" class="control-label font66">备注：</label>
+                        </td>
+                        <td>
+                            <input id="SalesDesc" name="SalesDesc" type="text" class="easyui-textbox in180"
+                                   placeholder="">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="height:15px;border-top:1px dashed #cccccc;margin-top:15px;"></div>
+            <table>
+                <tr class="tr60">
+                    <td style="width:200px;"></td>
+                    <td class="td80">
+                        <a href="javascript:close();" class="easyui-linkbutton btn" iconCls="icon-save" style="color: #009900;width:80px">确  定</a>
+                    </td>
+                    <td class="td80"></td>
+                    <td class="td80">
+                        <a href="javascript:close(); " class="easyui-linkbutton btn" iconCls="icon-cancel" style="color: #009900;width:80px">关  闭</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            getSaleRec();
+            getGoods();
+        });
+
+        $("#aDanJu").click(function () {
+            $("#tbDanJu").toggle(500);
+        });
+
+        function getSaleRec() {
+            var sID = getQueryString();
+            $("#RecID").val(sID.ID);
+            var sUrl = "/api/SalesRec/GetSalesRec/" + sID.ID;
+            $.ajax({
+                url: sUrl,
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    var da = $.parseJSON(data);
+                    $('#MemberName').textbox('setValue', da[0].MemberName);
+                    $('#MemberNo').textbox('setValue', da[0].MemberNo);
+                    $('#MemberScore').textbox('setValue', da[0].MemberScore);
+                    $('#DiscountAmount').textbox('setValue', da[0].DiscountAmount);
+                    $('#ChargeAmount').textbox('setValue', da[0].ChargeAmount);
+                    $('#ReceiveAmount').textbox('setValue', da[0].ReceiveAmount);
+                    $('#SalesNo').textbox('setValue', da[0].SalesNo);
+                    $('#SalesDate').textbox('setValue', da[0].SalesDate);
+                    $('#SalesType').textbox('setValue', da[0].SalesType);
+                    $('#AddPerson').textbox('setValue', da[0].AddUser);
+                    $('#SalerName').textbox('setValue', da[0].SalerName);
+                    $('#PaymentMethod').textbox('setValue', da[0].PaymentMethod);
+                    $('#DeliveryMethod').textbox('setValue', da[0].DeliveryMethod);
+                    $('#SalesDesc').textbox('setValue', da[0].SalesDesc);
+                },
+                error: function (msg) {
+                    alert("很抱歉，未能添加相关信息，请稍候重试。或与技术人员联系。" + msg.statusText);
+                }
+            });
+        }
+
+        function getGoods() {
+            var sID = getQueryString();
+            console.debug(sID);
+            $('#dgList').datagrid({
+                url: '/api/SalesRec/GetSalesRecDetailBySID/' + sID.ID,
+                method: 'get'
+            });
+        }
+
+        function close() {
+            window.parent.closeTab();  
+        }
+
+    </script>
+
+</body>
+</html>
