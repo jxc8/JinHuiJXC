@@ -67,6 +67,7 @@ input { }
 .rank-num { width: 14px; height: 14px; color: #fff; text-align: center; display: inline; float: left; font-size: 12px; line-height: 14px; background: #95B8E7; margin-right: 20px; }
 .rank-title { float: left; display: inline; margin-right: 40px; width: 320px; }
 .rank-one { display: inline; float: right; text-align: right; }
+.icon-ok { background: url('/Images/ok.png') no-repeat center center; }
 .icon-save { background: url('/Images/disk.png') no-repeat center center; }
 .icon-edit { background: url('/Images/tb_edit.png') no-repeat center center; }
 .icon-refurbish { background: url('/Images/re_refresh.png') no-repeat center center; }
@@ -84,7 +85,7 @@ input { }
 .icon-huoche1 { background: url('/Images/ico_lorry1.png') no-repeat center center; }
 .icon-huoche2 { background: url('/Images/ico_lorry2.png') no-repeat center center; }
 .icon-huoche3 { background: url('/Images/ico_lorry3.png') no-repeat center center; }
-.icon-appup3 { background: url('/Images/round_right.png') no-repeat center center;}
+.icon-appup3 { background: url('/Images/round_right.png') no-repeat center center; }
 .icon-hangye { background: url('/Images/ico_report1.png') no-repeat center center; }
 .icon-shang { background: url('/Images/ico_account2.png') no-repeat center center; }
 .icon-piaoju { background: url('/Images/ico_res1.png') no-repeat center center; }
@@ -98,3 +99,5 @@ input { }
 .divGuide { float: left; margin: 30px; }
 .divGuide11 { width: 120px; float: left; height: 120px; text-align: center; color: #333333; border-radius: 20px; background-color: #E0ECFF; box-shadow: 3px 3px 3px #d3d3d3; }
     .divGuide11:hover { background-color: #d9e7fe; color: #ff6a00; outline: none; text-decoration: none; }
+
+.login-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; min-width: 1000px; z-index: -10; zoom: 1; background: url('/Images/bg10.jpg') no-repeat; background-size: cover; -webkit-background-size: cover; -o-background-size: cover; background-position: center 0; }

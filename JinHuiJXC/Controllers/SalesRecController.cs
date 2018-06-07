@@ -20,12 +20,12 @@ namespace Controllers
         /// <param name="jfrom"></param>
         /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult Add(JObject jfrom)
+        public HttpResponseMessage Add(JObject jfrom)
         {
             string s = "";
             if (string.IsNullOrWhiteSpace(jfrom.ToString()))
             {
-                return Ok(0);
+                return Request.CreateResponse(HttpStatusCode.OK, 0);
             }
 
             SalesRecModel rec = new SalesRecModel();
@@ -95,7 +95,7 @@ namespace Controllers
             rec.State = 0;
 
             object oRowID = SqlHelper.ExecuteScalar("SalesRecAdd", rec.SalesNo, rec.SalesDate,
-                rec.SalesType, rec.SalerName, rec.MemberNo, rec.MemberName, rec.MemberScore,
+                rec.SalesType, rec.SalerName, rec.MemberName, rec.MemberNo, rec.MemberScore,
                 rec.AmountCharge, rec.AmountDiscount, rec.AmountReceive, rec.ProfitSum, rec.ProfitRate,
                 rec.PaymentType, rec.DeliveryType, rec.Desc, rec.State, rec.AddUser, rec.AddTime, rec.LastTime);
 
@@ -116,7 +116,7 @@ namespace Controllers
                 da.GoodsName = j["Name"].ToString();
                 da.Barcode = j["Barcode"].ToString();
                 da.Sum = int.Parse(j["Num"].ToString());
-                da.PriceUnit = decimal.Parse(j["UnitPrice"].ToString());
+                da.PriceUnit = decimal.Parse(j["PriceRetail"].ToString());
                 da.PackMin = int.Parse(j["MinPack"].ToString());
                 da.RateDis = int.Parse(j["Discount"].ToString());
                 da.PriceTotal = decimal.Parse(j["PriceTotal"].ToString());
@@ -126,7 +126,7 @@ namespace Controllers
                     da.AddUser, da.AddTime, da.LastTime);
             }
 
-            return Ok(1);
+            return Request.CreateResponse(HttpStatusCode.OK, 1);
         }
 
         public IHttpActionResult GetSalesRec(int ID)

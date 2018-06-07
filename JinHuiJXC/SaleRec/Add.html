@@ -94,6 +94,7 @@
                         <th width="25%" data-options="field:'Name'">商品名称</th>
                         <th width="10%" data-options="field:'Barcode'">条码</th>
                         <th width="10%" data-options="field:'NowInv'">当前库存</th>
+                        <th width="5%" data-options="field:'PriceCost',hidden:'true'">PriceCost</th>
                         <th width="5%" data-options="field:'PriceRetail'" editor="{type:'textbox',options:{required:false}}">单价</th>
                         <th width="10%" data-options="field:'Num'" editor="{type:'textbox',options:{required:false}}">数量</th>
                         <th width="5%" data-options="field:'MinPack'">单位</th>
@@ -139,6 +140,8 @@
                     <td style="width:100px;">
                         <input id="ReceiveAmount" name="ReceiveAmount" type="text" class="easyui-textbox in120"
                                value="0">
+                        <input id="ProfitSum" name="ProfitSum" type="hidden" value="0">
+                        <input id="ProfitRate" name="ProfitRate" type="hidden" value="0">
                     </td>
                 </tr>
             </table>

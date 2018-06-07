@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>金汇进销存</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Style/main.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript">
+    </script>
+
+</head>
+<body>
+    <div class="login-bg">
+        <div class="easyui-window" title="登 录" data-options="collapsible:false,closable:false,maximizable:false,minimizable:false,draggable:false,resizable:false"
+             style="width:440px;">
+            <form id="form1" class="easyui-form" action="/api/User/Login" method="post" data-options="novalidate:true">
+                <table class="tb60" border="0" cellpadding="0" cellspacing="0" style="min-height:300px">
+                    <tr class="tr60">
+                        <td class="td80">帐号：</td>
+                        <td class="td80">
+                            <input id="Name" name="Name" type="text" class="easyui-textbox in180" value="admin"
+                                   data-options="required:true,validType:'length[4,30]',missingMessage:'必须填写',invalidMessage:'限于4-30个字之间',
+                           validateOnCreate:false,validateOnBlur:true">
+                        </td>
+                    </tr>
+                    <tr class="tr60">
+                        <td class="td80">密码：</td>
+                        <td class="td80">
+                            <input id="Pass" name="Pass" type="password" class="easyui-textbox in180" value="88888888"
+                                   data-options="required:true,validType:'length[4,30]',missingMessage:'必须填写',invalidMessage:'限于4-30个字之间',
+                           validateOnCreate:false,validateOnBlur:true">
+                        </td>
+                    </tr>
+                    <tr class="tr60">
+                        <td class="td80">
+                            <a href="#" class="easyui-linkbutton btn" onclick="submitForm()" iconCls="icon-ok" style="color: #009900;width:80px">登 录</a>
+                        </td>
+                        <td class="td80">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="easyui-linkbutton btn" iconCls="icon-undo" style="color: #009900;width:80px">取 消</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function submitForm() {
+            $('#form1').form('submit', {
+                onSubmit: function () {
+                    return $(this).form('enableValidation').form('validate');
+                },
+                success: function (data) {
+                    if (data == 1) {
+                        window.location.href = "Main.html";
+                    }
+                    else {
+                        alert("账号或密码不正确，请重新输入。");
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
