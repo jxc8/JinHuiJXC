@@ -11,16 +11,19 @@
 您可以添加、修改、删除、扩展源码。但是必须保持开源，仍然保留金汇进销存软件名称，禁止向其他人销售源码。  
 
 # 开发环境
-开发架构：C# 6.0
-开发平台：.NET Framework 4.6
-开发工具：Visual Studio 2017
-前端框架：EasyUI、jQuery
-后端框架：ASP.NET Web API
-数据存储：SQL Server 2016
+开发架构：C# 6.0  
+开发平台：.NET Framework 4.6  
+开发工具：Visual Studio 2017  
+前端框架：EasyUI、jQuery  
+后端框架：ASP.NET Web API  
+数据存储：SQL Server 2016  
 
 
 # 运行环境
-
+电脑硬件：2G以上内存、40G以上硬盘  
+操作系统：Windows 7/8/10、Server 2013/6/8  
+运行平台：IIS 7/8/10 、.NET Framework 4.6  
+数据存储：SQL Server 2016/8 Express  
 
 # 免责声明
 金汇进销存及所附带的文件是作为不提供任何明确的或隐含的赔偿或担保的形式提供的。   
