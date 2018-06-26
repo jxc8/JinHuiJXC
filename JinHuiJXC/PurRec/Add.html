@@ -9,28 +9,28 @@
     <link rel="stylesheet" type="text/css" href="/Style/main.css">
 </head>
 <body>
-    <form id="form1" class="easyui-form" action="/api/SalesRec/Add" method="post">
+    <form id="form1" class="easyui-form" action="/api/PurRec/Add" method="post">
         <table border="0" cellpadding="0" cellspacing="0">
             <tr class="tr60">
                 <td style="width:70px;">
-                    <label for="MemberName">供  应 商：</label>
+                    <label for="SupplierNo">供  应 商：</label>
                 </td>
                 <td style="width:180px;">
-                    <input id="MemberName" name="MemberName" type="text" class="easyui-textbox"
+                    <input id="SupplierNo" name="SupplierNo" type="text" class="easyui-textbox"
                            placeholder="">
                 </td>
                 <td style="width:100px;text-align:right;">
-                    <label for="MemberNo">仓库：</label>
+                    <label for="WarehouseNo">仓库：</label>
                 </td>
                 <td style="width:180px;">
-                    <input id="MemberNo" name="MemberNo" type="text" class="easyui-textbox"
+                    <input id="WarehouseNo" name="WarehouseNo" type="text" class="easyui-textbox"
                            placeholder="">
                 </td>
                 <td style="width:100px;text-align:right;">
-                    <label for="MemberScore" class="control-label">入库时间：</label>
+                    <label for="WarehouseTime" class="control-label">入库时间：</label>
                 </td>
                 <td style="width:180px;">
-                    <input id="MemberScore" name="MemberScore" type="text" class="easyui-textbox"
+                    <input id="WarehouseTime" name="WarehouseTime" type="text" class="easyui-textbox"
                            placeholder="">
                 </td>
                 <td style="width:100px;text-align:right;">
@@ -154,21 +154,21 @@
                                    placeholder="">
                         </td>
                         <td style="width:100px;text-align:right;">
-                            <label for="SalesDate" class="control-label font66">单据日期：</label>
+                            <label for="PurDate" class="control-label font66">单据日期：</label>
                         </td>
                         <td style="width:120px;">
                             <div class='input-group date' id='datetimepicker1'>
-                                <input id="SalesDate" name="SalesDate" type='text' class="easyui-datebox in180" />
+                                <input id="PurDate" name="PurDate" type='text' class="easyui-datebox in180" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </td>
                         <td style="width:100px;text-align:right;">
-                            <label for="SalesType" class="control-label font66">单据类型：</label>
+                            <label for="PurType" class="control-label font66">单据类型：</label>
                         </td>
                         <td style="width:120px;">
-                            <input id="SalesType" name="SalesType" type="text" class="easyui-textbox in180"
+                            <input id="PurType" name="PurType" type="text" class="easyui-textbox in180"
                                    placeholder="">
                         </td>
                         <td style="width:100px;text-align:right;">
@@ -184,10 +184,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="SalerName" class="control-label font66">采购人：</label>
+                            <label for="PurName" class="control-label font66">采购人：</label>
                         </td>
                         <td>
-                            <input id="SalerName" name="SalerName" type="text" class="easyui-textbox in180"
+                            <input id="PurName" name="PurName" type="text" class="easyui-textbox in180"
                                    placeholder="">
                         </td>
                         <td style="text-align:right;">
@@ -205,10 +205,10 @@
                                    placeholder="">
                         </td>
                         <td style="text-align:right;">
-                            <label for="SalesDesc" class="control-label font66">备注：</label>
+                            <label for="Desc" class="control-label font66">备注：</label>
                         </td>
                         <td>
-                            <input id="SalesDesc" name="SalesDesc" type="text" class="easyui-textbox in180"
+                            <input id="Desc" name="Desc" type="text" class="easyui-textbox in180"
                                    placeholder="">
                         </td>
                     </tr>
@@ -249,8 +249,8 @@
             });
         });
 
-        $('#SalesNo').val(getNumberOnTime());
-        $('#SalesDate').val(getNowDate());
+        $('#PurNo').val(getNumberOnTime());
+        $('#PurDate').val(getNowDate());
 
         function Save() {
             var data = $('#dgList').datagrid('getRows');

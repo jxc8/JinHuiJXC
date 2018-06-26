@@ -20,8 +20,9 @@ namespace Models
         public string Pinyin { get; set; }
 
         public int PackMin { get; set; }
+
         public decimal PriceUnit { get; set; }
-        
+
         public int Sum { get; set; }
 
         public int RateDis { get; set; }
@@ -29,9 +30,11 @@ namespace Models
         public int RateTax { get; set; }
 
         public decimal PriceTotal { get; set; }
-        
+
         public int AddUser { get; set; }
+
         public DateTime LastTime { get; set; }
+
         public DateTime AddTime { get; set; }
     }
 }
