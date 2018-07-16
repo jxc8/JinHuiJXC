@@ -77,7 +77,7 @@ namespace Controllers
             string sPriceMember = jfrom["PriceMember"].ToString();
             string sMinInv = jfrom["MinInv"].ToString();
             string sMaxInv = jfrom["MaxInv"].ToString();
-            string sMinPack = jfrom["MinPack"].ToString();
+            string sPackMin = jfrom["PackMin"].ToString();
             string sMaxPack = jfrom["MaxPack"].ToString();
             string sRatio = jfrom["Ratio"].ToString();
             string sSpec = jfrom["Spec"].ToString();
@@ -106,7 +106,7 @@ namespace Controllers
             Goods.InvNow = 0;
             Goods.InvMin = WebHelper.StrToInt(sMinInv);
             Goods.InvMax = WebHelper.StrToInt(sMaxInv);
-            Goods.PackMin = WebHelper.StrToInt(sMinPack);
+            Goods.PackMin = WebHelper.StrToInt(sPackMin);
             Goods.PackMax = WebHelper.StrToInt(sMaxPack);
             Goods.PackRatio = WebHelper.StrToInt(sRatio);
 
@@ -160,7 +160,7 @@ namespace Controllers
             string sPriceMember = jfrom["PriceMember"].ToString();
             string sMinInv = jfrom["MinInv"].ToString();
             string sMaxInv = jfrom["MaxInv"].ToString();
-            string sMinPack = jfrom["MinPack"].ToString();
+            string sPackMin = jfrom["PackMin"].ToString();
             string sMaxPack = jfrom["MaxPack"].ToString();
             string sRatio = jfrom["Ratio"].ToString();
             string sSpec = jfrom["Spec"].ToString();
@@ -189,7 +189,7 @@ namespace Controllers
 
             Goods.InvMin = WebHelper.StrToInt(sMinInv);
             Goods.InvMax = WebHelper.StrToInt(sMaxInv);
-            Goods.PackMin = WebHelper.StrToInt(sMinPack);
+            Goods.PackMin = WebHelper.StrToInt(sPackMin);
             Goods.PackMax = WebHelper.StrToInt(sMaxPack);
             Goods.PackRatio = WebHelper.StrToInt(sRatio);
 

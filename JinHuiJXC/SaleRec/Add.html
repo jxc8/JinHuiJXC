@@ -93,11 +93,13 @@
                         <th width="5%" data-options="field:'ID',hidden:'true'">ID</th>
                         <th width="25%" data-options="field:'Name'">商品名称</th>
                         <th width="10%" data-options="field:'Barcode'">条码</th>
+                        <th width="2%" data-options="field:'Pinyin',hidden:'true'">Pinyin</th>
+                        <th width="2%" data-options="field:'Nocode',hidden:'true'">Nocode</th>
                         <th width="10%" data-options="field:'NowInv'">当前库存</th>
                         <th width="5%" data-options="field:'PriceCost',hidden:'true'">PriceCost</th>
                         <th width="5%" data-options="field:'PriceRetail'" editor="{type:'textbox',options:{required:false}}">单价</th>
                         <th width="10%" data-options="field:'Num'" editor="{type:'textbox',options:{required:false}}">数量</th>
-                        <th width="5%" data-options="field:'MinPack'">单位</th>
+                        <th width="5%" data-options="field:'PackMin'">单位</th>
                         <th width="5%" data-options="field:'Discount'" editor="{type:'textbox',options:{required:false}}">折扣(%)</th>
                         <th width="10%" data-options="field:'PriceTotal'" editor="{type:'textbox',options:{required:false}}">总价</th>
                     </tr>
@@ -311,7 +313,7 @@
                 $('#dgList').datagrid('appendRow',
                     {
                         ID: o.ID, Name: o.Name, Barcode: o.Barcode, NowInv: o.NowInv, PriceRetail: o.PriceRetail,
-                        Num: '1', MinPack: o.MinPack, Discount: '100', PriceTotal: o.PriceRetail
+                        Num: '1', PackMin: o.PackMin, Discount: '100', PriceTotal: o.PriceRetail
                     }
                 );
             }

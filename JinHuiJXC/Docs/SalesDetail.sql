@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[SalesRecDetail](
 	[Nocode] [nvarchar](100) NULL,						--商品编码
 	[Barcode] [nvarchar](100) NULL,					--商品条码
 	[Pinyin] [nvarchar](100) NULL,						--拼音编码
-	[MinPack] [int] NULL,									--最小包装
+	[PackMin] [int] NULL,									--最小包装
 	[UnitPrice] [decimal](18, 2) NULL,					--单价
 	[Sum] [int] NULL,											--数量
 	[DisRate] [int] NULL,										--折扣(%)
@@ -50,7 +50,7 @@ GO
 ALTER TABLE [dbo].[SalesDetail] ADD  DEFAULT ('') FOR [Pinyin]
 GO
 
-ALTER TABLE [dbo].[SalesDetail] ADD  DEFAULT ((0)) FOR [MinPack]
+ALTER TABLE [dbo].[SalesDetail] ADD  DEFAULT ((0)) FOR [PackMin]
 GO
 
 ALTER TABLE [dbo].[SalesDetail] ADD  DEFAULT ((0)) FOR [UnitPrice]

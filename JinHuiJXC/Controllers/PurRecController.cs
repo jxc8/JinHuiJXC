@@ -113,13 +113,15 @@ namespace Controllers
                 da.Barcode = j["Barcode"].ToString();
                 da.Sum = int.Parse(j["Num"].ToString());
                 da.PriceUnit = decimal.Parse(j["PriceRetail"].ToString());
-                da.PackMin = int.Parse(j["MinPack"].ToString());
+                da.PackMin = int.Parse(j["PackMin"].ToString());
                 da.RateDis = int.Parse(j["Discount"].ToString());
                 da.PriceTotal = decimal.Parse(j["PriceTotal"].ToString());
 
                 SqlHelper.ExecuteNonQuery("PurRecDetailAdd", da.PurID, da.GoodsID, da.GoodsName, da.Nocode,
                     da.Barcode, da.Pinyin, da.PackMin, da.PriceUnit, da.Sum, da.PriceTotal, da.RateDis, da.RateTax,
                     da.AddUser, da.AddTime, da.LastTime);
+
+                SqlHelper.ExecuteNonQuery("GoodsInvNowAdd", da.GoodsID, da.Sum);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, 1);
