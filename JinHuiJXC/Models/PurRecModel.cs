@@ -33,7 +33,7 @@ namespace Models
         public int PurType { get; set; }
 
         /// <summary>
-        /// 进货员ID
+        /// 采购员ID
         /// </summary>
         public string PurName { get; set; }
                 

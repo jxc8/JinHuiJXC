@@ -134,7 +134,7 @@
         function getSelected() {
             var row = $('#dgList').datagrid('getSelected');
             if (row) {
-                $.messager.alert('提示', row.Name + "申报");
+                $.messager.alert('提示', row.Name + "尚未开放");
             }
         }
         function Search() {
@@ -142,10 +142,11 @@
         }
         function Del() {
             var row = $('#dgList').datagrid('getSelected');
+            var url = "/api/SalesRec/DeleteSalesRec?SalesID=" + row.ID;
             $.messager.defaults = { ok: "是", cancel: "否" };
             $.messager.confirm('警告', '您确认删除这条信息吗?删除之后不可恢复！', function (r) {
                 if (r) {
-                    SalesRecDel(row.ID);
+                    DelDataRow(row.ID);
                 }
             });
         }

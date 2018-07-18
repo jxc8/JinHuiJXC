@@ -63,8 +63,8 @@ namespace Controllers
             decimal.TryParse(jfrom["ReceiveAmount"].ToString(), out dReceiveAmount);
             pur.AmountReceive = dReceiveAmount;
 
-            pur.ProfitSum = pur.AmountReceive;
-            pur.ProfitRate = pur.AmountReceive;
+            pur.ProfitSum = 0;
+            pur.ProfitRate = 0;
 
             int iPaymentMethod = 0;
             int.TryParse(jfrom["PaymentMethod"].ToString(), out iPaymentMethod);

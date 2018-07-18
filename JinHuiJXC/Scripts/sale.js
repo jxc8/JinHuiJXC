@@ -19,9 +19,9 @@ $(function () {
     });
 });
 
-function SalesRecDel(rowid) {
+function DelDataRow(url) {
     $.ajax({
-        url: "/api/SalesRec/DeleteSalesRec?SalesID=" + rowid,
+        url: url,
         type: "Delete",
         dataType: "json",
         success: function (data) {
