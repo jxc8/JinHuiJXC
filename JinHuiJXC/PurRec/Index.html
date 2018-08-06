@@ -39,11 +39,11 @@
                 <tr>
                     <td>
                         <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
-                           onclick="self.parent.addTab('添加采购记录', '/SalesRec/Add.html')">添加</a>
+                           onclick="self.parent.addTab('添加采购记录', '/PurRec/Add.html')">添加</a>
                     </td>
                     <td>
                         <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-show',plain:true"
-                           onclick="Edit()">查看</a>
+                           onclick="Show()">查看</a>
                     </td>
                     <td>
                         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-del-1',plain:true"
@@ -120,10 +120,10 @@
             });
         });
 
-        function Edit() {
+        function Show() {
             var row = $('#dgList').datagrid('getSelected');
             var sTitle = ('查看' + row.SalesNo).substring(0, 10);
-            var sUrl = "/SalesRec/Show.html?ID=" + row.ID;
+            var sUrl = "/PurRec/Show.html?ID=" + row.ID;
             self.parent.addTab(sTitle, sUrl);
         }
 

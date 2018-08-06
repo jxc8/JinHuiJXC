@@ -146,7 +146,7 @@ namespace Controllers
             return joAll;
         }
 
-        public JObject GetPurRecDetailBySID(int ID)
+        public JObject GetPurRecDetailByPID(int ID)
         {
             DataTable dt = SqlHelper.ExecuteDataset("PurRecDetailGetByPurID", ID).Tables[0];
             JObject joAll = WebHelper.DataTableToJsonObject(dt);
