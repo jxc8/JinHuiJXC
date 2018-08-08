@@ -534,7 +534,7 @@
     <Content Include="Goods\Index.html" />
     <Content Include="Goods\Show.html" />
     <Content Include="Main.html" />
-    <Content Include="Login.html" />
+    <Content Include="Index.html" />
     <Content Include="Member\Add.html" />
     <Content Include="Member\Edit.html" />
     <Content Include="Member\Index.html" />
